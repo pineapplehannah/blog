@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'sinatra'
+require 'lib/post.rb'
 
 #get '/' do
 #	"I'm a Home Page and I will display 4 posts!"	
@@ -14,6 +15,10 @@ require 'sinatra'
 #end
 
 class Blog < Sinatra::Base
+	before do
+		@posts = Post.load_files
+	end
+
 	get '/' do
 		"I'm a Home Page and I will display 4 posts!"	
 	end
